@@ -1,0 +1,11 @@
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\bin\Debug\netcoreapp2.1\Devsu2011.deps.json
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\bin\Debug\netcoreapp2.1\Devsu2011.runtimeconfig.json
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\bin\Debug\netcoreapp2.1\Devsu2011.runtimeconfig.dev.json
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\bin\Debug\netcoreapp2.1\Devsu2011.dll
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\bin\Debug\netcoreapp2.1\Devsu2011.pdb
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\obj\Debug\netcoreapp2.1\Devsu2011.csprojAssemblyReference.cache
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\obj\Debug\netcoreapp2.1\Devsu2011.csproj.CoreCompileInputs.cache
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\obj\Debug\netcoreapp2.1\Devsu2011.AssemblyInfoInputs.cache
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\obj\Debug\netcoreapp2.1\Devsu2011.AssemblyInfo.cs
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\obj\Debug\netcoreapp2.1\Devsu2011.dll
+C:\Users\Omayra\source\repos\Devsu2011\Devsu2011\obj\Debug\netcoreapp2.1\Devsu2011.pdb
