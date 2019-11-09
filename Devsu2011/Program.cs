@@ -19,6 +19,11 @@ namespace Devsu2011
             for(int i = 0; i<result.Length;i++) { Console.Write(result[i].ToString() + " "); }
             Console.WriteLine();
             Console.WriteLine("Result 6.- " + devsuCodeJam2011_6("this is a test"));
+            
+            Console.WriteLine("Result 7.-" + devsuCodeJam2011_07("Ñañito, QUÉ bien!THIS is a sample text, Lorem Ipsum, 2 Be Converted."));
+            Console.WriteLine("Result 8.-" + devsuCodeJam2011_08("this is a sample text, it has a lot of analysis."));
+            Console.WriteLine("Result 9.-" + devsuCodeJam2011_09(144));
+            devsuCodeJam2011_10(1, 8);
 
 
             Console.ReadKey();
@@ -169,6 +174,175 @@ namespace Devsu2011
                 else { lastimpar = lastimpar + 1; serie[i] = lastimpar; }
             }
             return serie;
+        }
+
+        static String devsuCodeJam2011_07(string word)
+        {
+            //Given a string which contain letters(uppercase and lowercase), numbers, and special
+            //characters, return the same string in all lowercase.
+            //For example, if the function receives:
+            //“Ñañito, QUÉ bien!THIS is a sample text, Lorem Ipsum, 2 Be Converted.”
+            //The function should return:
+            //“ñañito, qué bien!this is a sample text, lorem ipsum, 2 be converted.”
+            //The function should consider converting: All characters from A-Z, Á,É,Í,Ó,Ú and Ñ.Other
+            //characters will remain the same.
+            //Limitation:
+            //The conversion should be done considering the ASCII values.Obviously you CAN’T use the
+            //functions provided by the language(toLowercase(), lowercase(), etc.). You CAN’T have a
+            //huge switch statement with cases for each letter, or lots of if/else statements.
+            //This function will receive an string and return an string
+            String result = "";
+            int[] specialCode = { 209, 193, 201, 205, 211, 218 };
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (Convert.ToInt32(word[i]) <= 90 && (Convert.ToInt32(word[i])) > 64)
+                {
+                    result += Convert.ToChar(Convert.ToInt32(word[i] + 32));
+                }
+                else
+                {
+                    bool isspecial = false;
+                    for (int j = 0; j < specialCode.Length; j++)
+                    {
+                        if (Convert.ToInt32(word[i]) == specialCode[j])
+                        {
+                            isspecial = true;
+                            break;
+                        }
+                    }
+                    if (isspecial)
+                    {
+                        result += Convert.ToChar(Convert.ToInt32(word[i] + 32));
+                    }
+                    else
+                    {
+                        result += word[i];
+                    }
+                }
+            }
+            return result;
+        }
+
+        static int devsuCodeJam2011_08(String word)
+        {
+            //Given a string, find the number of words that has at least one “a” character(uppercase or
+            //lowercase).Do not take into account character variations like á, à, etc... only the simple “a”
+            //and “A” counts.
+            //The words are always separated by a space, a comma, a semicolon or a dot.
+            //For example:
+            //If the function receives: “this is a sample text, it has a lot of analysis.” The function should
+            //return 5, since five words has “a” characters. (a, sample, has, a, analysis).
+            //The function will receive a string and return an integer.
+            //Limitations: Do not use the split() function, or similar.
+            String temp = "";
+            String[] result = new string[word.Length];
+            int cont = 0;
+            bool stop = false;
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] != '.' && word[i] != ',' && Convert.ToInt32(word[i]) != 32)
+                {
+                    temp += word[i];
+                }
+                else
+                {
+                    for (int j = 0; j < temp.Length; j++)
+                    {
+                        if (temp[j] == 'A' || temp[j] == 'a')
+                        {
+                            cont += 1;
+                            break;
+                        }
+                    }
+                    temp = "";
+                }
+            }
+            return cont;
+        }
+
+        static bool devsuCodeJam2011_09(int value)
+        {
+            //Given a positive integer number determine if it’s the power of two of another integer.
+            //Don’t start coding, read the limitations.
+            //For example:
+            //If the function receives 25, it should return TRUE, because 5 ^ 2 = 25
+            //If the function receives 1, it should return TRUE, because 1 ^ 2 = 1
+            //If the function receives 16, it should return TRUE, because 4 ^ 2 = 16
+            //If the function receives 14, it should return FALSE.
+            //Limitation: You CAN’T use functions of square roots(sqrt() or similar), potentiation(pow() or
+            //similar).ONLY the basic arithmetic operations(sum, substraction, multiplication, division),
+            //and any logic operations are allowed.
+            //The function receives a positive integer greater than 0, and should return a boolean value.
+            bool issqrt = false;
+            for (int i = 0; i < (value / 2); i++)
+            {
+                issqrt = i * i == value;
+                if (i * i == value) { break; }
+            }
+            return issqrt;
+        }
+        static int devsuCodeJam2011_10(int a, int b)
+        {
+            for (int i = a; i < b; i++)
+            {
+                int sum = 0;
+                for (int j = 1; j < i; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        sum += j;
+                    }
+                }
+                if (i == sum)
+                {
+                    Console.WriteLine("El nùmero " + i + " Es perfecto ");
+                    return sum;
+                }
+            }
+            return 0;
+        }
+
+
+        static void miniMaxSum(int[] arr)
+        {
+            Int64 sumMax = 0;
+            Int64 sumMin = 0;
+            Int64[] sumTotal = new Int64[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Int64 sum = 0;
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (i != j)
+                    {
+                        sumTotal[i] += arr[j];
+                        sum += arr[j];
+                    }
+                    if (j == arr.Length - 1)
+                    {
+                        if (i == 0) { sumMin = sum; sumMax = sum; }
+                        else
+                        {
+                            if (sum > sumMax)
+                            {
+                                sumMax = sum;
+                            }
+                            if (sum < sumMin)
+                            {
+                                sumMin = sum;
+                            }
+                        }
+                    }
+                }
+            }
+            /*for(int i = 0; i < sumTotal.Length; i++)
+            {
+                if(sumMax < sumTotal[i])
+                {
+                    sumMax = sumTotal[i];
+                }
+            }*/
+            Console.Write(sumMin + " " + sumMax);
         }
     }
 }
