@@ -16,14 +16,15 @@ namespace Devsu2011
             Console.WriteLine("Result 4.- " + devsuCodeJam2011_4("DevsuCodeJam is just great!", "I am here! :)").ToString());
             int[] result = devsuCodeJam2011_5(values);
             Console.WriteLine("Result 5.-");
-            for(int i = 0; i<result.Length;i++) { Console.Write(result[i].ToString() + " "); }
+            for (int i = 0; i < result.Length; i++) { Console.Write(result[i].ToString() + " "); }
             Console.WriteLine();
             Console.WriteLine("Result 6.- " + devsuCodeJam2011_6("this is a test"));
-            
+
             Console.WriteLine("Result 7.-" + devsuCodeJam2011_07("Ñañito, QUÉ bien!THIS is a sample text, Lorem Ipsum, 2 Be Converted."));
             Console.WriteLine("Result 8.-" + devsuCodeJam2011_08("this is a sample text, it has a lot of analysis."));
             Console.WriteLine("Result 9.-" + devsuCodeJam2011_09(144));
-            devsuCodeJam2011_10(1, 8);
+            Console.WriteLine("Result 10.-" + devsuCodeJam2011_10(1, 8));
+            Console.WriteLine("Result 11.-" + devsuCodeJam2011_11(new int[] {1, 5, 3, -2, 4, 2, 4, -2, 5, 5, 2, 1, 3}));
 
 
             Console.ReadKey();
@@ -222,7 +223,6 @@ namespace Devsu2011
             }
             return result;
         }
-
         static int devsuCodeJam2011_08(String word)
         {
             //Given a string, find the number of words that has at least one “a” character(uppercase or
@@ -259,7 +259,6 @@ namespace Devsu2011
             }
             return cont;
         }
-
         static bool devsuCodeJam2011_09(int value)
         {
             //Given a positive integer number determine if it’s the power of two of another integer.
@@ -295,14 +294,12 @@ namespace Devsu2011
                 }
                 if (i == sum)
                 {
-                    Console.WriteLine("El nùmero " + i + " Es perfecto ");
+                    //Console.WriteLine("El nùmero " + i + " Es perfecto ");
                     return sum;
                 }
             }
             return 0;
         }
-
-
         static void miniMaxSum(int[] arr)
         {
             Int64 sumMax = 0;
@@ -335,14 +332,63 @@ namespace Devsu2011
                     }
                 }
             }
-            /*for(int i = 0; i < sumTotal.Length; i++)
-            {
-                if(sumMax < sumTotal[i])
-                {
-                    sumMax = sumTotal[i];
-                }
-            }*/
             Console.Write(sumMin + " " + sumMax);
+        }
+
+        static int devsuCodeJam2011_11(int[] arr)
+        {
+            //Given an array of integers, 
+            //find which is repeated more times.Return the number that has more repetitions.
+            //If two numbers has the same amount of repetitions, return the lower number.  
+            //For example, given this array:
+            //A = [1, 5, 3, -2, 4, 2, 4, -2, 5, 5, 2, 1, 3]
+            //1 is repeated 2 times 5 is repeated 3 times 3 is repeated 2 times - 2 
+            //is once 4 is repeated 2 times 2 is repeated 2 times
+            //The most repeated number is 5.The function should return: 5. 
+            //(Because 5 is repeated 3 times in the array).
+            //The function will receive an array of integers and return an integer.
+            Array.Sort(arr);
+            int max = 1;
+            int result = arr[0];
+            int current_max = 0;
+            for(int i = 1;i< arr.Length - 1; i++)
+            {
+                if(arr[i - 1] == arr[i])
+                {
+                    max += 1;
+                }
+                else
+                {
+                    if(current_max < max)
+                    {
+                        current_max = max;
+                        if(result < arr[i - 1])
+                        {
+                            result = arr[i - 1];
+                        }
+                        
+                    }
+                    if(arr[i - 1] < result)
+                    {
+                        current_max = arr[i - 1];
+                    }
+                    Console.WriteLine("El numero " + arr[i - 1] + " Tiene " + max);
+                    max = 1;
+                }
+            }
+            if (arr[arr.Length - 1] == arr[arr.Length - 2])
+            {
+                max += 1;
+            }
+            if(current_max < max)
+            {
+                current_max = max;
+                if (result < arr[arr.Length - 1])
+                {
+                    result = arr[arr.Length - 1];
+                }
+            }
+            return result;
         }
     }
 }
